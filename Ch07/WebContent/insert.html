@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- onsubmit, onclick 등 attribute를 통해서 자바스크립트의 함수를 실행할 수 있다. -->
+
+<form action="insert.jsp" method="post" name="form1" onsubmit="return check();">
+사용자 ID <input type="text" name="id"> 
+암호 <input type="text" name="password" onkeyup="this.value=check_num(this.value)"><br>
+이름 <input type="text" name="name"><br>
+이메일 <input type="email" name="email"><br>
+<input type="submit" value="확인">
+<input type="reset" value="다시 작성">
+</form>
+
+<!-- script 문이 제일 아래에 있어야 html 엔진이 html을 파싱하여 화면에 출력하는 데 방해를 하지 않는다. 곧 화면 출력이 빠르다는 이야기다. -->
+
+<script type="text/javascript">
+
+function check(){
+	with(document.form1){
+		if(id.value.length==0){
+			alert("이름을 입력해주세요");
+			id.focus();
+			return false;
+		}
+		if(password.value.length==0){
+			alert("비밀번호를 입력해주세요");
+			password.focus();
+			return false;
+		}
+		if(password.value.length<6 || password.value.length>15){
+			alert("비밀번호는 6자 이상 15자 내외로 입력해주세요");
+			password.focus();
+			return false;
+		}
+		if(name.value.length==0){
+			alert("이름을 입력해주세요");
+			name.focus();
+			return false;
+		}
+		
+		submit();
+		
+		
+	}
+}
+
+
+</script>
+</body>
+</html>
